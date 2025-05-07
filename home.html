@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growell - Study Medical in Abroad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --light-green: #4CAF50;
+            --cream: #F5F5DC;
+            --dark-cream: #E8E5D6;
+            --text-dark: #333;
+            --text-light: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-radius: 30px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--dark-cream);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(188, 198, 188, 0.8), rgba(91, 154, 94, 0.9)), url('Photos/team-working-together-project.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-green);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #3E8E41;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--dark-cream);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-green);
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--light-green);
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            margin-top: 30px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--cream);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Universities Section */
+        .universities {
+            padding: 80px 0;
+            background-color: var(--dark-cream);
+        }
+        
+        .university-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 200px;
+            margin-top: 100px;
+        }
+        
+        .university-logo {
+            width: 250px;
+            height: 200px;
+            background-color: white;
+            border-radius: 0.9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 05px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .university-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .university-logo img {
+            max-width: 160%;
+            max-height: 200%;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        
+        .university-logo:hover img {
+            filter: grayscale(0%);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--cream);
+        }
+        
+        .testimonial-slider {
+            margin-top: 90px;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            background-color: white;
+            border-radius: 0.9px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 0 15px;
+            text-align: center;
+        }
+        
+        .testimonial-slide p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--light-green);
+        }
+        
+        .author-info h4 {
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-style: normal;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--dark-cream);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--light-green);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--light-green);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--light-green);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: var(--dark-cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--text-light);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-green);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: all 0.5s ease;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .university-logo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a><img src="Photos/3d logo.png" alt="Growell Logo"></a>
+                <h1>Growell</h1>
+            </div>
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#universities">Universities</a></li>
+                    <!--<li><a href="#testimonials">Testimonials</a></li>-->
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Pursue Your Future with Growell</h2>
+            <p>Your pathway to world-class medical education in China's and Other Countries top universities with our expert guidance and support services.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Growell</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Trusted Partner for Medical Education in China and Other Country</h3>
+                    <p>Growell Educational Institute specializes in helping international students pursue medical degrees in China's prestigious universities. With over 10 years of experience, we've guided hundreds of students through the complex process of admission, visa application, and cultural adaptation.</p>
+                    <p>Our team consists of former international students and education experts who understand the challenges you may face and are dedicated to making your journey smooth and successful.</p>
+                    <p>We maintain strong relationships with top medical universities across China, ensuring our students receive the best possible education and support throughout their academic journey.</p>
+                </div>
+                <div class="about-image">
+                    <img src="Photos/bonding.jpg" alt="Medical students in China">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="Photos/classes.jpg" alt="University Admission">
+                    <div class="service-content">
+                        <h3>University Admission Assistance</h3>
+                        <p>Comprehensive support with selecting the right university, preparing application documents, and securing admission to China's top medical schools.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="Photos/visa.jpg" alt="Visa Assistance">
+                    <div class="service-content">
+                        <h3>Visa Application Support</h3>
+                        <p>Expert guidance through the entire visa application process, including document preparation, interview coaching, and follow-up with embassies.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="Photos/helping.jpg" alt="Pre-Departure Orientation">
+                    <div class="service-content">
+                        <h3>Pre-Departure Orientation</h3>
+                        <p>Essential training on Chinese culture, academic expectations, and practical living tips to help you adapt quickly to your new environment.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="Photos/student nature.jpg" alt="Student Support">
+                    <div class="service-content">
+                        <h3>Ongoing Student Support</h3>
+                        <p>24/7 assistance with academic challenges, accommodation issues, and any other concerns you may have during your studies in China.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universities Section -->
+    <section class="universities" id="universities">
+        <div class="container">
+            <h2 class="section-title">Partner Universities</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">We work with China's top-ranked medical universities that are recognized by WHO, MCI, and other international medical councils.</p>
+            <div class="university-logos">
+                <div class="university-logo">
+                    <img src="Photos/Uinversity1.jpg" alt="Peking University"><h class="uni1"></h>
+                </div>
+                <div class="university-logo">
+                    <img src="Photos/University2.jpg" alt="Fudan University"><h class="uni2"></h>
+                </div>
+                <div class="university-logo">
+                    <img src="Photos/University3.jpg" alt="Tsinghua University"><h class="uni3"></h>
+                </div>
+                <div class="university-logo">
+                    <img src="Photos/university4.jpg" alt="Zhejiang University"><h class="uni4"></h>
+                </div>
+                <div class="university-logo">
+                    <img src="Photos/University5.jpg" alt="Shanghai Jiao Tong">
+                </div>
+                <div class="university-logo">
+                    <img src="Photos/library.jpg" alt="Nanjing Medical University">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Student Testimonials</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide">
+                    <p>"Growell made my dream of studying medicine in China a reality. Their guidance through the admission process was invaluable, and their ongoing support during my studies has been exceptional. I couldn't have done it without them!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Divhya Bhandari">
+                        <div class="author-info">
+                            <h4>Divhiya Bhandari</h4>
+                            <p>MBBS Student at Peking University</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>"The pre-departure orientation provided by Growell prepared me so well for life in China. They helped with everything from visa processing to finding accommodation. Their team is always available when I need assistance."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Ashim Bhatari">
+                        <div class="author-info">
+                            <h4>Ashim Bhatrai</h4>
+                            <p>MBBS Student at Fudan University</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>"I was skeptical at first, but Growell exceeded all my expectations. They matched me with the perfect university for my needs and budget. The quality of education I'm receiving is world-class, and I'm grateful for their support."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amien Mohammed">
+                        <div class="author-info">
+                            <h4>Amien Mohammed</h4>
+                            <p>MDS Student at Zhejiang University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Sahabhagita Marga, Kathmandu, Nepal</p>
+                        <p><i class="fas fa-phone"></i> +977-9844511713<br>+861-3752449959<br>+977-9860999108</p>
+                        <p><i class="fas fa-envelope"></i> consultancygrowell@gmail.com</p>
+                        <p><i class="fas fa-clock"></i> Sunday - Friday: 9:00 AM - 6:00 PM</p>
+                    </div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Program of Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select a program</option>
+                                <option value="mbbs">MBBS (Bachelor of Medicine)</option>
+                                <option value="md">MD (Doctor of Medicine)</option>
+                                <option value="phd">PhD in Medical Sciences</option>
+                                <option value="other">MBA/MA</option>
+                                <option value="other">Engineering</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Growell</h3>
+                    <p>Growell Educational Institute specializes in helping international students pursue medical degrees in China's top universities with comprehensive support services.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#universities">Partner Universities</a></li>
+                        s<li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#">MBBS in China</a></li>
+                        <li><a href="#">MD Programs</a></li>
+                        <li><a href="#">Postgraduate Medicine</a></li>
+                        <li><a href="#">Clinical Rotations</a></li>
+                        <li><a href="#">Chinese Language Courses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Sahabhagita Marga, Kathmandu, Nepal</li>
+                        <li><i class="fas fa-phone"></i> +977-9844511713<br> +977-9860999108<br> +861-3752449959</li>
+                        <li><i class="fas fa-envelope"></i> consultancygrowell@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Growell Educational Consultancy . All Rights Reserved. <br>Desined and Developed by:     Solutionspath Techonology PTV. LTD</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-slide');
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+        
+        // Initialize
+        showTestimonial(0);
+        setInterval(nextTestimonial, 5000);
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // Here you would typically send the data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! We've received your message and will contact you at ${email} shortly.`);
+            
+            // Reset the form
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
